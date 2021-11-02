@@ -10,8 +10,9 @@ class Rand():
         self.db = tinydb.TinyDB('./database/db.json')
 
     def generate_filename(self, charset='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'):
-        def random_string(): return ''.join(
-            random.sample(charset, (random.randint(6, 7))))
+        def random_string():
+            string_list = random.sample(charset, (random.randint(6, 7)))
+            return string_list[0].lower() + ''.join(string_list[1:])
 
         gen_strings_table = self.db.table('generated_strings')
         gen_strings = [list(dct.values())[0]
