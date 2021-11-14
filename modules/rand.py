@@ -12,6 +12,8 @@ class Rand():
     def generate_filename(self, charset='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'):
         def random_string():
             string_list = random.sample(charset, (random.randint(6, 7)))
+            
+            # Lower the first character from the string because prnt.sc will redirect to homepage if not.
             return string_list[0].lower() + ''.join(string_list[1:])
 
         gen_strings_table = self.db.table('generated_strings')
